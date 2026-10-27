@@ -1,0 +1,116 @@
+### Create a new subject
+POST {{url}}/subjects
+Content-Type: application/json
+
+{
+    "name": "Mathematics",
+    "numberOfQuestions": 10
+}
+
+###
+### Get all subjects
+GET {{url}}/subjects
+
+###
+### Get subject by ID
+GET {{url}}/subjects/1
+
+###
+### Update subject
+PUT {{url}}/subjects/1
+Content-Type: application/json
+
+{
+    "name": "Advanced Mathematics",
+    "numberOfQuestions": 15
+}
+
+###
+### Delete subject
+DELETE {{url}}/subjects/1
+
+
+### =========================
+### Questions
+### =========================
+
+###
+### Create a new question for subject 1
+POST {{url}}/subjects/1/questions
+Content-Type: application/json
+
+{
+    "question": "What is 2 + 2?"
+}
+
+###
+### Get all questions
+GET {{url}}/questions
+
+###
+### Get question by ID
+GET {{url}}/questions/1
+
+###
+### Update question
+PUT {{url}}/questions/1
+Content-Type: application/json
+
+{
+    "question": "What is 5 + 5?"
+}
+
+###
+### Delete question
+DELETE {{url}}/questions/1
+
+```http
+### Test AI-chatten
+POST {{url}}/chat
+Content-Type: application/json
+
+{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Forklar hvad en Java-klasse er. Svar på dansk og på begynderniveau."
+                }
+            ]
+        }
+    ]
+}
+
+### Test opfølgende spørgsmål med samtalehistorik
+POST {{url}}/chat
+Content-Type: application/json
+
+{
+    "contents": [
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Hvad er en Java-klasse?"
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "En Java-klasse er en skabelon, som bruges til at oprette objekter."
+                }
+            ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Kan du give mig et eksempel?"
+                }
+            ]
+        }
+    ]
+}

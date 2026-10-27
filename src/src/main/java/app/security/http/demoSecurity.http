@@ -1,0 +1,32 @@
+### Create a new user - this one will only get a USER role by default
+POST {{url}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "user@exmp3le.com",
+  "username": "RA!333333",
+  "password": "test12233"
+}
+###
+POST {{url}}/auth/login/
+
+{
+    "username": "RA3333",
+    "password": "test12233¤"
+}
+
+> {%
+    client.global.set("jwt_token", response.body.token);
+    console.log("JWT Token:", client.global.get("jwt_token"));
+%}
+
+### Add user role to user with anyone role
+POST {{url}}/auth/user/addrole/
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+
+{
+    "role": "USER"
+}
